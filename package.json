@@ -1,8 +1,8 @@
 {
   "name": "express-translate",
-  "description": "Add simple translation support to Express",
+  "description": "Startup Weekend fork - Add simple translation support to Express",
   "version": "0.3.0",
-  "homepage": "https://github.com/uber/express-translate",
+  "homepage": "https://github.com/StartupWeekend/express-translate",
   "author": {
     "name": "Matt Morgan",
     "email": "matt@mlmorg.com",
@@ -15,15 +15,15 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/uber/express-translate.git"
+    "url": "git://github.com/StartupWeekend/express-translate.git"
   },
   "bugs": {
-    "url": "https://github.com/uber/express-translate/issues"
+    "url": "https://github.com/StartupWeekend/express-translate/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/uber/express-translate/blob/master/LICENSE"
+      "url": "https://github.com/StartupWeekend/express-translate/blob/master/LICENSE"
     }
   ],
   "main": "lib/express-translate",
