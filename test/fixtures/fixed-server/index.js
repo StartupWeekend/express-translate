@@ -166,3 +166,16 @@ exports['GET 200 /default-string'] = {
     }
   ]
 };
+
+exports['GET 200 /safe-tags'] = {
+  method: 'get',
+  route: '/safe-tags',
+  response: [
+    serverSetup,
+    setReqLocale('en'),
+    expressTranslateSetup(),
+    function (req, res) {
+      res.render('safe-tags');
+    }
+  ]
+};

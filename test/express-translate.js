@@ -116,4 +116,31 @@ describe('Loading a page that is translated with express-translate', function ()
       });
     });
   });
+
+  describe('when using safe tags in your translations', function () {
+    fixedServer.run(['GET 200 /safe-tags']);
+    httpUtils.save('http://localhost:1337/safe-tags');
+
+    describe("such as a br tag", function () {
+      it('should leave the unclosed tag in the resulting translation', function () {
+        expect(this.body).to.contain('<p>Hello<br>World</p>');
+      });
+
+      it('should leave the self-closing tag in the result', function () {
+        expect(this.body).to.contain('Hello<br/>World</p>');
+      });
+
+      it('should leave paragraph tags', function () {
+        expect(this.body).to.contain('<p>Par 1</p><p>Par 2</p>');
+      });
+
+      it('should leave em tags', function () {
+        expect(this.body).to.contain('<em>So emphatic!</em>');
+      });
+
+      it('should leave strong tags', function () {
+        expect(this.body).to.contain('<strong>What a strong statement</strong>');
+      });
+    });
+  });
 });
