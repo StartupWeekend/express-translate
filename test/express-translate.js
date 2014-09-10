@@ -99,4 +99,21 @@ describe('Loading a page that is translated with express-translate', function ()
       expect(this.body).to.contain('<p>string from nested translation</p>');
     });
   });
+
+  describe('when a default string is provided', function () {
+    fixedServer.run(['GET 200 /default-string']);
+    httpUtils.save('http://localhost:1337/default-string');
+
+    describe('and a translation is found', function () {
+      it('should ignore the default string and return the translation', function () {
+        expect(this.body).to.contain('<p>Hello Default String</p>');
+      });
+    });
+
+    describe('and a translation is not found', function () {
+      it('should return the default string', function () {
+        expect(this.body).to.contain('<p>Default String in lieu of translation</p>');
+      });
+    });
+  });
 });

@@ -153,3 +153,16 @@ exports['GET 200 /nested-keys'] = {
     }
   ]
 };
+
+exports['GET 200 /default-string'] = {
+  method: 'get',
+  route: '/default-string',
+  response: [
+    serverSetup,
+    setReqLocale('en'),
+    expressTranslateSetup(),
+    function (req, res) {
+      res.render('default-string');
+    }
+  ]
+};
