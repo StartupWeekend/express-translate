@@ -138,3 +138,18 @@ exports['GET 200 /interpolation-setting'] = {
     }
   ]
 };
+
+exports['GET 200 /nested-keys'] = {
+  method: 'get',
+  route: '/nested-keys',
+  response: [
+    serverSetup,
+    setReqLocale('en'),
+    expressTranslateSetup(),
+    function (req, res) {
+      res.render('index', {
+        hello_joe: req.t('nested.translation')
+      });
+    }
+  ]
+};

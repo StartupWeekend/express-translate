@@ -4,6 +4,9 @@ module.exports = {
     hello_alt: 'Hello <name>',
     you_get_a: 'You get a ${label} and you get a ${label}',
     malicious: '<script>alert("hi")</script> ${name}',
-    malicious_key: 'Hello ${<script>alert("hi")</script>}'
+    malicious_key: 'Hello ${<script>alert("hi")</script>}',
+    nested: {
+      translation: 'string from nested translation'
+    }
   }
 };

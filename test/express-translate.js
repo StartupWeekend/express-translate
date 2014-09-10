@@ -90,4 +90,13 @@ describe('Loading a page that is translated with express-translate', function ()
       });
     });
   });
+
+  describe('when the translation calls for a nested string key', function () {
+    fixedServer.run(['GET 200 /nested-keys']);
+    httpUtils.save('http://localhost:1337/nested-keys');
+
+    it('should load the correct translation', function () {
+      expect(this.body).to.contain('<p>string from nested translation</p>');
+    });
+  });
 });
