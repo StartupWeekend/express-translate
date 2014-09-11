@@ -53,7 +53,7 @@ describe('Loading a page that is translated with express-translate', function ()
     httpUtils.save('http://localhost:1337/escape-values');
 
     it('should escape the html when `whitelistedKeys` is not set for the associated key', function () {
-      expect(this.body).to.contain('<p>Hello &lt;script&gt;alert(&quot;hi&quot;)&lt;/script&gt;</p>');
+      expect(this.body).to.contain('<p>Hello &lt;script&gt;alert("hi")&lt;/script&gt;</p>');
     });
 
     it('should not escape the html when `whitelistedKeys` is set for the associated key', function () {
@@ -66,7 +66,7 @@ describe('Loading a page that is translated with express-translate', function ()
     httpUtils.save('http://localhost:1337/escape-key');
 
     it('should escape the key', function () {
-      expect(this.body).to.eql('<p>Hello ${&lt;script&gt;alert(&quot;hi&quot;)&lt;/script&gt;}</p>');
+      expect(this.body).to.eql('<p>Hello ${&lt;script&gt;alert("hi")&lt;/script&gt;}</p>');
     });
   });
 
@@ -75,8 +75,8 @@ describe('Loading a page that is translated with express-translate', function ()
     httpUtils.save('http://localhost:1337/escape-translation');
 
     it('should escape the translation html but not the interpolated values', function () {
-      expect(this.body).to.contain('<p>&lt;script&gt;alert(&quot;hi&quot;)&lt;/script&gt; &lt;script&gt;alert(&quot;hi&quot;)&lt;/script&gt;</p>');
-      expect(this.body).to.contain('<p>&lt;script&gt;alert(&quot;hi&quot;)&lt;/script&gt; <script>alert("bye")</script>');
+      expect(this.body).to.contain('<p>&lt;script&gt;alert("hi")&lt;/script&gt; &lt;script&gt;alert("hi")&lt;/script&gt;</p>');
+      expect(this.body).to.contain('<p>&lt;script&gt;alert("hi")&lt;/script&gt; <script>alert("bye")</script>');
     });
   });
 
@@ -147,6 +147,19 @@ describe('Loading a page that is translated with express-translate', function ()
       it('should leave strong tags', function () {
         expect(this.body).to.contain('<strong>What a strong statement</strong>');
       });
+    });
+  });
+
+  describe('when the translated string contains quotes or apostrophes', function () {
+    fixedServer.run(['GET 200 /safe-tags']);
+    httpUtils.save('http://localhost:1337/safe-tags');
+
+    it('should leave unescaped double quotes', function () {
+      expect(this.body).not.to.contain('The man said &quot;hello&quot;');
+    });
+
+    it ('should leave unescaped apostrophes', function () {
+      expect(this.body).not.to.contain('This is David&#39;s test');
     });
   });
 });

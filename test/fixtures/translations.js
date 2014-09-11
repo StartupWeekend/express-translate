@@ -13,7 +13,9 @@ module.exports = {
       br_closed: 'Hello<br/>World',
       p: '<p>Par 1</p><p>Par 2</p>',
       em: '<em>So emphatic!</em>',
-      strong: '<strong>What a strong statement</strong>'
+      strong: '<strong>What a strong statement</strong>',
+      doublequote: 'The man said "hello"',
+      apostrophe: "This is David's test"
     }
   }
 };
