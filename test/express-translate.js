@@ -129,15 +129,21 @@ describe('Loading a page that is translated with express-translate', function ()
       it('should leave the self-closing tag in the result', function () {
         expect(this.body).to.contain('Hello<br/>World</p>');
       });
+    });
 
+    describe('such as a p tag', function () {
       it('should leave paragraph tags', function () {
         expect(this.body).to.contain('<p>Par 1</p><p>Par 2</p>');
       });
+    });
 
+    describe('such as a em tag', function () {
       it('should leave em tags', function () {
         expect(this.body).to.contain('<em>So emphatic!</em>');
       });
+    });
 
+    describe('such as a strong tag', function () {
       it('should leave strong tags', function () {
         expect(this.body).to.contain('<strong>What a strong statement</strong>');
       });
