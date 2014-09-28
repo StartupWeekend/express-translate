@@ -1,4 +1,5 @@
 # express-translate [![Build Status](https://travis-ci.org/uber/express-translate.png?branch=master)](https://travis-ci.org/uber/express-translate)
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/StartupWeekend/express-translate?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Adds translation support to [Express](http://expressjs.com/) by exposing a `t()`
 function to both the `req` object and your views (using `res.locals`). It will
