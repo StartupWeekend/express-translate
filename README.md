@@ -6,11 +6,32 @@ translate keys specified in an object mapping of `key => translation string` for
 the languages that you specify. String interpolation is supported and all
 [malicious content](#solved-xss-vulnerabilities) is html-escaped by default.
 
+## Why This Fork?
+
+UP Global maintains this fork to add features that we needed in support of
+translations efforts for our [Community Sites project](http://www.up.co/communities)
+
+We have not yet worked with Uber to learn if our thoughts are aligned, though we'd
+be happy to contribute these back.
+
+New features we needed that were not available in the main project:
+
+* Call nested string keys to access translations strings in nested groups
+* Support for basic HTML formatting tags in translation text
+* Ability to provide a default string to the translation function
+  * Optional, but helps the developer understand what is going in the template
+  * Provides a safe fallback if a translation is unavailable or a key is not found in   
+  the translations file
+
 ## Installation
 
+Add to `package.json`:
+
 ```
-npm install express-translate
+  "express-translate": "git+ssh://git@github.com/StartupWeekend/express-translate"
 ```
+
+Run `npm install`
 
 ## Usage
 
